@@ -4,11 +4,11 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"gw-event-bus/internal"
-	"gw-event-bus/internal/config"
-	"gw-event-bus/internal/message"
 	"time"
 
+	"github.com/execaus/gw-event-bus/internal"
+	"github.com/execaus/gw-event-bus/internal/config"
+	"github.com/execaus/gw-event-bus/internal/message"
 	"github.com/segmentio/kafka-go"
 	"go.uber.org/zap"
 )
