@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/execaus/gw-event-bus/internal/config"
-
 	"github.com/segmentio/kafka-go"
 	"go.uber.org/zap"
 )
@@ -15,8 +13,8 @@ const (
 	connectTimeout = 5 * time.Second
 )
 
-func Ping(config config.Config, logger *zap.Logger) {
-	address := fmt.Sprintf("%s:%s", config.Host, config.Port)
+func Ping(host, port string, logger *zap.Logger) {
+	address := fmt.Sprintf("%s:%s", host, port)
 
 	connCtx, cancel := context.WithTimeout(context.Background(), connectTimeout)
 	defer cancel()

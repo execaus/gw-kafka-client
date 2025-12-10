@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/execaus/gw-event-bus/internal"
-	"github.com/execaus/gw-event-bus/internal/config"
 	"github.com/execaus/gw-event-bus/internal/message"
 
 	"github.com/segmentio/kafka-go"
@@ -82,12 +81,12 @@ func newTopic[MessageT message.Types](name internal.TopicName, partition int, ad
 	return t
 }
 
-func GetTopics(config config.Config, logger *zap.Logger) Topics {
+func GetTopics(host, port string, logger *zap.Logger) Topics {
 	topics := Topics{
 		PaymentsHighValueTransfer: newTopic[message.PaymentsHighValueTransferMessage](
 			internal.PaymentsHighValueTransferTopicV1,
 			0,
-			fmt.Sprintf("%s:%s", config.Host, config.Port),
+			fmt.Sprintf("%s:%s", host, port),
 			logger,
 		),
 	}

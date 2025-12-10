@@ -2,7 +2,6 @@ package gw_event_bus
 
 import (
 	"github.com/execaus/gw-event-bus/internal"
-	"github.com/execaus/gw-event-bus/internal/config"
 	"github.com/execaus/gw-event-bus/internal/consumer"
 
 	"go.uber.org/zap"
@@ -12,11 +11,11 @@ type Consumer struct {
 	Topics consumer.Topics
 }
 
-func NewConsumer(config config.Config, logger *zap.Logger) Consumer {
-	internal.Ping(config, logger)
+func NewConsumer(host, port string, logger *zap.Logger) Consumer {
+	internal.Ping(host, port, logger)
 
 	c := Consumer{
-		Topics: consumer.GetTopics(config, logger),
+		Topics: consumer.GetTopics(host, port, logger),
 	}
 	return c
 }
