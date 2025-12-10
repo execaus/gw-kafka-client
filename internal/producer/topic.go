@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/execaus/gw-event-bus/internal"
-	"github.com/execaus/gw-event-bus/internal/message"
+	"github.com/execaus/gw-event-bus/message"
 
 	"github.com/segmentio/kafka-go"
 	"go.uber.org/zap"
