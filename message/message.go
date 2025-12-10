@@ -5,8 +5,8 @@ type Types interface {
 }
 
 type PaymentsHighValueTransferMessage struct {
-	Email  string
-	From   string
-	To     string
-	Amount float32
+	Email  string  `json:"email"`
+	From   string  `json:"from"`
+	To     string  `json:"to"`
+	Amount float32 `json:"amount"`
 }
