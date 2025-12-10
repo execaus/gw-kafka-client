@@ -5,4 +5,8 @@ type Types interface {
 }
 
 type PaymentsHighValueTransferMessage struct {
+	Email  string
+	From   string
+	To     string
+	Amount float32
 }
