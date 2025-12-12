@@ -1,6 +1,7 @@
 package gw_event_bus
 
 import (
+	"io"
 	"sync"
 
 	"github.com/execaus/gw-event-bus/internal"
@@ -9,10 +10,6 @@ import (
 
 	"go.uber.org/zap"
 )
-
-type Closable interface {
-	Close() error
-}
 
 type Consumer struct {
 	Topics consumer.Topics
@@ -40,7 +37,7 @@ func (c *Consumer) Close() error {
 	return result.ErrorOrNil()
 }
 
-func (c *Consumer) closeTopic(topic Closable, wg *sync.WaitGroup, result *multierror.Error) {
+func (c *Consumer) closeTopic(topic io.Closer, wg *sync.WaitGroup, result *multierror.Error) {
 	if err := topic.Close(); err != nil {
 		result = multierror.Append(result, err)
 	}
